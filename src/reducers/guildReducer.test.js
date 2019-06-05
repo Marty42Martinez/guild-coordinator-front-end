@@ -37,4 +37,28 @@ describe('Guild Reducer tests', () => {
       error: null
     });
   });
+  it('handles the FETCH..REJECTED action', () => {
+    const initialState = {
+      list: [],
+      loading: false,
+      error: null
+    };
+    const action = {
+      type: FETCH_GUILD_LIST_REJECTED,
+      payload: {
+        status: 404,
+        error: 'Something bad happened'
+      }
+    };
+    const newState = reducer(initialState, action);
+
+    expect(newState).toEqual({
+      list: [],
+      loading: false,
+      error: {
+        status: 404,
+        error: 'Something bad happened'
+      }
+    });
+  });
 });
