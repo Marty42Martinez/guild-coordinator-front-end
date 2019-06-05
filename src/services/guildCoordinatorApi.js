@@ -1,7 +1,7 @@
 import defaultImage from '../assets/honey-bear.png';
 import { get } from './restMethods';
 
-export const getGuildList = () => {
+export const getAllGuilds = () => {
   return get('some.ec2.server.compute.aws')
     .then(json => ({
       list: json.map(guild => ({
