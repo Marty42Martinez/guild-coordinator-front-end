@@ -9,6 +9,8 @@ const initialState = {
 
 export default function reducer(state = initialState, action) {
   switch(action.type) {
+    case FETCH_GUILD_LIST:
+      return { ...state, list: [...action.payload], loading: false };
     default: 
       return state;
   }
