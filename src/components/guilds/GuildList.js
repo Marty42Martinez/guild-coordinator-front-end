@@ -9,7 +9,7 @@ const guildsByGame = guilds => {
   };
 
   guilds.forEach(guild => {
-    gameObj[guild.game] = [...gameObj[guild.game], guild]
+    gameObj[guild.game] = [...gameObj[guild.game], guild];
   });
 
   return gameObj;
