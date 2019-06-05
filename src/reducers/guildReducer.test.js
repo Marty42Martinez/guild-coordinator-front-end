@@ -19,7 +19,22 @@ describe('Guild Reducer tests', () => {
       loading: false,
       error: null
     });
+  });
+  it('handles the FETCH..PENDING action', () => {
+    const initialState = {
+      list: [],
+      loading: false,
+      error: null
+    };
+    const action = {
+      type: FETCH_GUILD_LIST_PENDING
+    };
+    const newState = reducer(initialState, action);
 
-
+    expect(newState).toEqual({
+      list: [],
+      loading: true,
+      error: null
+    });
   });
 });

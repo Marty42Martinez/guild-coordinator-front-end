@@ -11,6 +11,8 @@ export default function reducer(state = initialState, action) {
   switch(action.type) {
     case FETCH_GUILD_LIST:
       return { ...state, list: [...action.payload], loading: false };
+    case FETCH_GUILD_LIST_PENDING:
+      return { ...state, loading: true };
     default: 
       return state;
   }
