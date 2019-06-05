@@ -16,8 +16,8 @@ GuildLink.propTypes = {
     name: PropTypes.string.isRequired,
     game: PropTypes.string.isRequired,
     image: PropTypes.string.isRequired,
-    eventList: PropTypes.array.isRequired,
-    memberList: PropTypes.array.isRequired
+    eventList: PropTypes.array,
+    memberList: PropTypes.array
   }).isRequired
 };
 
