@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import GuildLink from './GuildLink';
 
 const guildsByGame = guilds => {
   const gameObj = {
@@ -18,11 +19,15 @@ function GuildList({ guilds }) {
   const gameObj = guildsByGame(guilds);
 
   const wowList = gameObj.WorldOfWarcraft.map(guild => (
-    <li key={guild._id}>guild.name</li>
+    <li key={guild._id}>
+      <GuildLink guild={guild} />
+    </li>
   ));
 
   const dndList = gameObj.DungeonsAndDragons.map(guild => (
-    <li key={guild._id}>guild.name</li>
+    <li key={guild._id}>
+      <GuildLink guild={guild} />
+    </li>
   ));
 
   return (
@@ -46,8 +51,7 @@ GuildList.propTypes = {
     game: PropTypes.string.isRequired,
     image: PropTypes.string.isRequired,
     eventList: PropTypes.array.isRequired,
-    memberList: PropTypes.array.isRequired,
-
+    memberList: PropTypes.array.isRequired
   })).isRequired
 };
 
