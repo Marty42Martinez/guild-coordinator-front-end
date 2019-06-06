@@ -1,12 +1,13 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 function GuildLink({ guild }) {
   return (
-    <>
+    <Link to={`/${guild._id}`}>
       <img src={guild.image}/>
       <p>{guild.name}</p>
-    </>
+    </Link>
   );
 }
 
