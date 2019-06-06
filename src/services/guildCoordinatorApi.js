@@ -15,4 +15,5 @@ export const getAllGuilds = () => {
 
 export const postGuildToDB = (body) => {
   return post('some.ec2.server.compute.aws', body);
+  //NEEDS TO RETURN THE BODY SO WE CAN ADD TO STORE
 };

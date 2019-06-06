@@ -1,4 +1,5 @@
 import { FETCH_GUILD_LIST, FETCH_GUILD_LIST_PENDING, FETCH_GUILD_LIST_REJECTED } from '../actions/guilds/guildActions';
+import { POST_GUILD, POST_GUILD_REJECTED } from '../actions/guilds/guildActions';
 import reducer from './guildReducer';
 
 describe('Guild Reducer tests', () => {
@@ -59,6 +60,34 @@ describe('Guild Reducer tests', () => {
         status: 404,
         error: 'Something bad happened'
       }
+    });
+  });
+  it('handles the POST_GUILD action', () => {
+    const initialState = {
+      list: [],
+      loading: false,
+      error: null
+    };
+    const action = {
+      type: POST_GUILD,
+      payload: {
+        body: {
+          name: 'Ignis Rising',
+          image: 'test.png',
+          game: 'WorldOfWarcraft'
+        }
+      }
+    };
+    const newState = reducer(initialState, action);
+
+    expect(newState).toEqual({
+      list: [{
+        name: 'Ignis Rising',
+        image: 'test.png',
+        game: 'WorldOfWarcraft'
+      }],
+      loading: false,
+      error: null
     });
   });
 });
