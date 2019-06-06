@@ -13,12 +13,14 @@ function EventLink({ event }) {
 }
 
 EventLink.propTypes = {
-  _id: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
-  date: PropTypes.string.isRequired,
-  time: PropTypes.string.isRequired,
-  guild: PropTypes.string.isRequired
+  event: PropTypes.shape({
+    _id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    date: PropTypes.string.isRequired,
+    time: PropTypes.string.isRequired,
+    guild: PropTypes.string.isRequired
+  }).isRequired
 };
 
 export default EventLink;
