@@ -39,7 +39,7 @@ export default class GuildForm extends PureComponent {
         <label>
           Choose a Game
           <select name="game" onChange={this.handleChange}>
-            <option value="" selected>--Please select an option--</option>
+            <option value="">--Please select an option--</option>
             <option value="WorldOfWarcraft">World of Warcraft</option>
             <option value="DungeonsAndDragons">Dungeons &amp; Dragons</option>
           </select>

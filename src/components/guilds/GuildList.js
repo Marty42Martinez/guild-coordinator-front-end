@@ -3,43 +3,60 @@ import PropTypes from 'prop-types';
 import GuildLink from './GuildLink';
 
 const guildsByGame = guilds => {
-  const gameObj = {
-    WorldOfWarcraft: [],
-    DungeonsAndDragons: []
-  };
+  // if(guilds.length === 0) return [];
+  return [...guilds].reduce(function(acc, current) {
+    if(!acc[current['game']]) { acc[current['game']] = []; }
+    acc[current['game']].push({ ...current });
+    return acc;
+  }, {});
+  
+  // const gameObj = {
+  //   WorldOfWarcraft: [],
+  //   DungeonsAndDragons: []
+  // };
 
-  guilds.forEach(guild => {
-    gameObj[guild.game] = [...gameObj[guild.game], guild];
-  });
+  // guilds.forEach(guild => {
+  //   gameObj[guild.game] = [...gameObj[guild.game], guild];
+  // });
 
-  return gameObj;
+  // return gameObj;
 };
 
 function GuildList({ guilds }) {
   const gameObj = guildsByGame(guilds);
+  console.log(gameObj);
 
-  const wowList = gameObj.WorldOfWarcraft.map(guild => (
-    <li key={guild._id}>
-      <GuildLink guild={guild} />
-    </li>
-  ));
+  const games = Object.keys(gameObj).map(game => {
+    const gameList = gameObj[game].map(guild => (
+      <li key={guild._id}>
+        <GuildLink guild={guild} />
+      </li>
+    ));
+    return (
+      <>
+        <h2>{game}</h2>
+        <ul>
+          {gameList}
+        </ul>
+      </>
+    );
+  });
+  // const wowList = gameObj.WorldOfWarcraft.map(guild => (
+  //   <li key={guild._id}>
+  //     <GuildLink guild={guild} />
+  //   </li>
+  // ));
 
-  const dndList = gameObj.DungeonsAndDragons.map(guild => (
-    <li key={guild._id}>
-      <GuildLink guild={guild} />
-    </li>
-  ));
-
+  // const dndList = gameObj.DungeonsAndDragons.map(guild => (
+  //   <li key={guild._id}>
+  //     <GuildLink guild={guild} />
+  //   </li>
+  // ));
+  const wowList = [];
+  const dndList = [];
   return (
     <section>
-      <h2>World of Warcraft</h2>
-      <ul>
-        {wowList}
-      </ul>
-      <h2>Dungeons &amp; Dragons</h2>
-      <ul>
-        {dndList}
-      </ul>
+      {games}
     </section>
   );
 }
