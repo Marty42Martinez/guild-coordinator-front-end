@@ -4,11 +4,13 @@ import { connect } from 'react-redux';
 import { getGuildList, getGuildLoading, getGuildError } from '../selectors/guildSelectors';
 import { fetchGuildList } from '../actions/guilds/guildActions';
 import GuildList from '../components/guilds/GuildList';
+import GuildForm from '../components/guilds/GuildForm';
 
 
 class GatherGuilds extends PureComponent {
   static propTypes = {
     fetch: PropTypes.func.isRequired,
+    onSubmit: PropTypes.func.isRequired,
     list: PropTypes.array.isRequired,
     loading: PropTypes.bool.isRequired,
     error: PropTypes.object
@@ -27,6 +29,7 @@ class GatherGuilds extends PureComponent {
     return (
       <section>
         <GuildList guilds={list} />
+        <GuildForm onSubmit={} />
       </section>
     );
   }
@@ -41,6 +44,9 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   fetch() {
     dispatch(fetchGuildList());
+  },
+  onSubmit(name, image, game) {
+    dispatch(postGuild(name, image, game));
   }
 });
 
