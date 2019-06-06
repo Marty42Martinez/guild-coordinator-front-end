@@ -1,7 +1,10 @@
 import { fetchGuildList, FETCH_GUILD_LIST, FETCH_GUILD_LIST_PENDING, FETCH_GUILD_LIST_REJECTED } from './guildActions';
 
+import { postGuild, POST_GUILD, POST_GUILD_REJECTED } from './guildActions';
+
 jest.mock('../../services/guildCoordinatorApi', () => ({
-  getGuildList: () => Promise.resolve([])
+  getAllGuilds: () => Promise.resolve([]),
+  postGuildToDB: () => Promise.resolve([])
 }));
 
 describe('Guild Actions tests', () => {
@@ -16,6 +19,17 @@ describe('Guild Actions tests', () => {
       rejectedType: FETCH_GUILD_LIST_REJECTED
     });
 
+  });
+  it('dispatches 4 actions when post is called', () => {
+    const actions = postGuild();
+
+    expect(actions).toEqual({
+      type: POST_GUILD,
+      payload: Promise.resolve([]),
+      pendingType: 'POST_GUILD_PENDING',
+      fulfilledType: 'POST_GUILD_FULFILLED',
+      rejectedType: POST_GUILD_REJECTED
+    });
   });
 });
 
