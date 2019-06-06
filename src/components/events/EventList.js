@@ -8,7 +8,7 @@ function EventList({ events }) {
       <EventLink event={event} />
     </li>
   ));
-  
+
   return (
     <ul>
       {listOfEvents}
@@ -19,7 +19,7 @@ function EventList({ events }) {
 EventList.propTypes = {
   events: PropTypes.arrayOf(PropTypes.shape({
     _id: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
     date: PropTypes.string.isRequired,
     time: PropTypes.string.isRequired,
