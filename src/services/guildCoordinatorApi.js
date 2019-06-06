@@ -1,5 +1,5 @@
 import defaultImage from '../assets/honey-bear.png';
-import { get } from './restMethods';
+import { get, post } from './restMethods';
 
 export const getAllGuilds = () => {
   return get('some.ec2.server.compute.aws')
@@ -11,4 +11,8 @@ export const getAllGuilds = () => {
         game: guild.game
       }))
     }));
+};
+
+export const postGuildToDB = (body) => {
+  return post('some.ec2.server.compute.aws', body);
 };
