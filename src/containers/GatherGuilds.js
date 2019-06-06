@@ -38,7 +38,7 @@ class GatherGuilds extends PureComponent {
 const mapStateToProps = state => ({
   list: getGuildList(state),
   loading: getGuildLoading(state),
-  error: getGuildError
+  error: getGuildError(state)
 });
 
 const mapDispatchToProps = dispatch => ({
