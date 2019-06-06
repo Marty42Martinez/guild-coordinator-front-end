@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getGuildList, getGuildLoading, getGuildError } from '../selectors/guildSelectors';
-import { fetchGuildList } from '../actions/guilds/guildActions';
+import { fetchGuildList, postGuild } from '../actions/guilds/guildActions';
 import GuildList from '../components/guilds/GuildList';
 import GuildForm from '../components/guilds/GuildForm';
 
@@ -22,14 +22,14 @@ class GatherGuilds extends PureComponent {
 
 
   render() {
-    const { list, loading } = this.props;
+    const { list, loading, onSubmit } = this.props;
 
     if(loading) return <h1>Loading!</h1>;
 
     return (
       <section>
         <GuildList guilds={list} />
-        <GuildForm onSubmit={} />
+        <GuildForm onSubmit={onSubmit} />
       </section>
     );
   }
