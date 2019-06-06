@@ -4,23 +4,24 @@ import reducer from './guildReducer';
 
 describe('Guild Reducer tests', () => {
   it('handles the FETCH action', () => {
-    const initialState = {
+    const initialState = {  
       list: [],
       loading: false,
       error: null
     };
     const action = {
       type: FETCH_GUILD_LIST,
-      payload: ['Apocalypse', 'IgnisRising']
+      payload: [{ name: 'Apocalypse' }, { name: 'IgnisRising' }]
     };
     const newState = reducer(initialState, action);
 
     expect(newState).toEqual({
-      list: ['Apocalypse', 'IgnisRising'],
+      list: [{ name: 'Apocalypse' }, { name: 'IgnisRising' }],
       loading: false,
       error: null
     });
   });
+
   it('handles the FETCH..PENDING action', () => {
     const initialState = {
       list: [],
@@ -38,6 +39,7 @@ describe('Guild Reducer tests', () => {
       error: null
     });
   });
+
   it('handles the FETCH..REJECTED action', () => {
     const initialState = {
       list: [],
@@ -62,6 +64,7 @@ describe('Guild Reducer tests', () => {
       }
     });
   });
+
   it('handles the POST_GUILD action', () => {
     const initialState = {
       list: [],
@@ -88,6 +91,31 @@ describe('Guild Reducer tests', () => {
       }],
       loading: false,
       error: null
+    });
+  });
+
+  it('handles the POST...REJECTED action', () => {
+    const initialState = {
+      list: [],
+      loading: false,
+      error: null
+    };
+    const action = {
+      type: POST_GUILD_REJECTED,
+      payload: {
+        status: 404,
+        error: 'Not able to perform request'
+      }
+    };
+    const newState = reducer(initialState, action);
+
+    expect(newState).toEqual({
+      list: [],
+      loading: false,
+      error: {
+        status: 404,
+        error: 'Not able to perform request'
+      }
     });
   });
 });
