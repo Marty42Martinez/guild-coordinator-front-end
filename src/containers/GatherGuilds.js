@@ -47,7 +47,7 @@ const mapDispatchToProps = dispatch => ({
     dispatch(fetchGuildList());
   },
   onSubmit(name, image, game) {
-    dispatch(postGuild(name, image, game));
+    dispatch(postGuild({ name, image, game }));
   }
 });
 
