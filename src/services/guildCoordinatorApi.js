@@ -13,9 +13,10 @@ export const getAllGuilds = () => {
 };
 
 export const postGuildToDB = (body) => {
-  return post('http://18.217.24.159/api/v1/guilds/', body)
+  const cheat = { ...body, members: ['5cf9a7095c7d1d24206b45df'] };
+  
+  return post('http://18.217.24.159/api/v1/guilds/', cheat)
     .then(json => {
-      console.log(json);
       return json;
     });
 };

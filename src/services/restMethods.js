@@ -22,7 +22,7 @@ export const post = (url, body) => {
     .then(res => ([res.ok, res.json()]))
     .then(([ok, json]) => {
       if(!ok) throw 'Unable to perform POST fetch';
-
+      
       return json;
     });
 };

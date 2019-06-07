@@ -15,8 +15,10 @@ export default function reducer(state = initialState, action) {
       return { ...state, loading: true };
     case FETCH_GUILD_LIST_REJECTED:
       return { ...state, error: action.payload, loading: false };
-    case POST_GUILD:
-      return { ...state, list: [...state.list, { ...action.payload.body }] };
+    case POST_GUILD: {
+      const { _id, game, members, name } = action.payload;
+      return { ...state, list: [...state.list, { _id, game, members, name }] };
+    }
     case POST_GUILD_REJECTED:
       return { ...state, error: { ...action.payload } };
     default: 
