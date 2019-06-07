@@ -18,5 +18,11 @@ export const post = (url, body) => {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify(body)
-  });
+  })
+    .then(res => ([res.ok, res.json()]))
+    .then(([ok, json]) => {
+      if(!ok) throw 'Unable to perform POST fetch';
+
+      return json;
+    });
 };
