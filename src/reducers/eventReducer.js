@@ -13,6 +13,8 @@ export default function reducer(state = initialState, action){
       return { ...state, loading: false, list: [...action.payload] };
     case FETCH_EVENTS_BY_GUILD_PENDING:
       return { ...state, loading: true };
+    case FETCH_EVENTS_BY_GUILD_REJECTED:
+      return { ...state, loading: false, error: { ...action.payload } };
     default: 
       return state;
   }
