@@ -41,7 +41,7 @@ const mapStateToProps = (state, props) => ({
 
 const mapDispatchToProps = (dispatch, props) => ({
   fetch() {
-    dispatch(fetchEventsByGuild(props.match.params.id))
+    dispatch(fetchEventsByGuild(props.match.params.id));
   }
 });
 
