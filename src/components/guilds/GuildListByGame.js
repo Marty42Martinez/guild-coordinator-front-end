@@ -24,7 +24,7 @@ GuildListByGame.propTypes = {
     _id: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     game: PropTypes.string.isRequired,
-    image: PropTypes.string.isRequired,
+    image: PropTypes.string,
   })).isRequired
 };
 

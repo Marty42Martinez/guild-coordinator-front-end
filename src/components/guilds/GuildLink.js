@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 function GuildLink({ guild }) {
   return (
     <Link to={`/${guild._id}`}>
-      <img src={guild.image}/>
+      { guild.image && <img src={guild.image}/> }
       <p>{guild.name}</p>
     </Link>
   );
@@ -16,7 +16,7 @@ GuildLink.propTypes = {
     _id: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     game: PropTypes.string.isRequired,
-    image: PropTypes.string.isRequired,
+    image: PropTypes.string,
     eventList: PropTypes.array,
     memberList: PropTypes.array
   }).isRequired
