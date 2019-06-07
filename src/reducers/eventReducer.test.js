@@ -41,4 +41,30 @@ describe('Event reducer tests', () => {
       error: null
     });
   });
+
+  it('handles the FETCH...REJECTED action', () => {
+    const initial = {
+      list: [],
+      loading: false,
+      error: null
+    };
+    const action = {
+      type: FETCH_EVENTS_BY_GUILD_REJECTED,
+      payload: {
+        status: 404,
+        message: 'WRONG'
+      }
+    };
+
+    const newState = reducer(initial, action);
+
+    expect(newState).toEqual({
+      list: [],
+      loading: false,
+      error: {
+        status: 404,
+        message: 'WRONG'
+      }
+    });
+  });
 });
