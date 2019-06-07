@@ -13,6 +13,22 @@ export const getAllGuilds = () => {
 };
 
 export const postGuildToDB = (body) => {
-  return post('some.ec2.server.compute.aws', body);
-  //NEEDS TO RETURN THE BODY SO WE CAN ADD TO STORE
+  return post('http://18.217.24.159/api/v1/guilds/', body)
+    .then(json => {
+      console.log(json);
+      return json;
+    });
 };
+
+export const getEventsByGuild = () => {
+  return get('http://18.217.24.159/api/v1/guilds/')
+    .then(json => (json.map(event => ({
+      _id: event._id,
+      title: event.title,
+      description: event.description,
+      date: event.date,
+      time: event.time,
+      guild: event.guild
+    }))));
+};
+
