@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import EventList from '../../components/events/EventList';
+import { fetchEventsByGuild } from '../../actions/events/eventActions';
+import { getEventList, getEventLoading, getEventError } from '../../selectors/eventSelectors';
 
 class GatherEvents extends PureComponent {
   static propTypes = {
@@ -21,7 +23,7 @@ class GatherEvents extends PureComponent {
     const { events, loading, error } = this.props;
 
     if(loading) return <h1>LOADING!</h1>;
-    if(error) return <h1>Status: {error.status}: {error.message}</h1>
+    if(error) return <h1>Status: {error.status}: {error.message}</h1>;
     return (
       <>
         <h1>Looks like we have made it</h1>
@@ -33,10 +35,9 @@ class GatherEvents extends PureComponent {
 
 const mapStateToProps = (state, props) => ({
   _id: props.match.params.id,
-  //Selectors!
-  events: '',
-  loading: '',
-  error: ''
+  events: getEventList(state),
+  loading: getEventLoading(state),
+  error: getEventError(state)
 });
 
 const mapDispatchToProps = (dispatch, props) => ({
