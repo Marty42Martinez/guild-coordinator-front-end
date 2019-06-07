@@ -1,6 +1,6 @@
 import { createAction } from 'promise-middleware-redux';
-import { postGuildToDB } from '../../services/guildCoordinatorApi';
-import { getAllGuilds } from '../../services/mockServices';
+import { postGuildToDB, getAllGuilds } from '../../services/guildCoordinatorApi';
+// import { getAllGuilds } from '../../services/mockServices';
 
 export const [
   fetchGuildList,

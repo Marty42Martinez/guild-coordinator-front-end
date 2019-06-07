@@ -1,7 +1,10 @@
 export const get = (url) => {
-  return fetch(url)
+  return fetch(url, {
+    method: 'GET'
+  })
     .then(res => ([res.ok, res.json()]))
     .then(([ok, json]) => {
+      
       if(!ok) throw 'Unable to perform GET fetch';
 
       return json;
