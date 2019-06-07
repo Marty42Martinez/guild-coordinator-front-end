@@ -22,9 +22,10 @@ class GatherGuilds extends PureComponent {
 
 
   render() {
-    const { list, loading, onSubmit } = this.props;
+    const { list, loading, error, onSubmit } = this.props;
 
     if(loading) return <h1>Loading!</h1>;
+    if(error) return <h1>ERROR: {error.message}</h1>;
 
     return (
       <section>
