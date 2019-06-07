@@ -21,6 +21,24 @@ describe('Event reducer tests', () => {
       loading: false,
       error: null
     });
+  });
 
+  it('handles the FETCH...PENDING action', () => {
+    const initial = {
+      list: [],
+      loading: false,
+      error: null
+    };
+    const action = {
+      type: FETCH_EVENTS_BY_GUILD_PENDING
+    };
+
+    const newState = reducer(initial, action);
+
+    expect(newState).toEqual({
+      list: [],
+      loading: true,
+      error: null
+    });
   });
 });
