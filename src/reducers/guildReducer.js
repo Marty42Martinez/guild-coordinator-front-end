@@ -14,7 +14,7 @@ export default function reducer(state = initialState, action) {
     case FETCH_GUILD_LIST_PENDING:
       return { ...state, loading: true };
     case FETCH_GUILD_LIST_REJECTED:
-      return { ...state, error: action.payload };
+      return { ...state, error: action.payload, loading: false };
     case POST_GUILD:
       return { ...state, list: [...state.list, { ...action.payload.body }] };
     case POST_GUILD_REJECTED:
