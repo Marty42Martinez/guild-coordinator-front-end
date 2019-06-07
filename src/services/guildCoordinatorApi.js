@@ -20,8 +20,8 @@ export const postGuildToDB = (body) => {
     });
 };
 
-export const getEventsByGuild = () => {
-  return get('http://18.217.24.159/api/v1/guilds/')
+export const getEventsByGuild = (id) => {
+  return get(`http://18.217.24.159/api/v1/guilds/events/${id}`)
     .then(json => (json.map(event => ({
       _id: event._id,
       title: event.title,
