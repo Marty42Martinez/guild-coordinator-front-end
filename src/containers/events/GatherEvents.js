@@ -43,6 +43,9 @@ const mapStateToProps = (state, props) => ({
 const mapDispatchToProps = (dispatch, props) => ({
   fetch() {
     dispatch(fetchEventsByGuild(props.match.params.id));
+  },
+  onSubmit(name, description, date, time, guild) {
+    dispatch(postEvent({ name, description, date, time, guild }));
   }
 });
 
